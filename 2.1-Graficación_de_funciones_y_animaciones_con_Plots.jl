@@ -101,7 +101,7 @@ md"  "
 
 # ╔═╡ d2472d6a-7072-49ae-ba55-207db17be3ca
 begin
-    l = 0.1        # ¡Cambia el valor de l y corre la celda,
+    l = 0.4        # ¡Cambia el valor de l y corre la celda,
     plot(sin,0:l:2π) # y observa qué sucede con la gráfica!
 end
 
@@ -109,7 +109,7 @@ end
 md""" Con un poquito de 'magia' de Pluto, podemos hacer que el parámetro de longitud sea _interactivo_ (también existe una manera de hacer esto en Jupyter). Nota que cambiaremos el nombre del parámetro a `l1` para no generar conflicto con la variable `l` definida anteriormente pues, en Pluto, cada vez que corres una celda, Pluto después vuelve a correr todas las demás celdas para "actualizarlas". """
 
 # ╔═╡ af69d454-96fc-4e92-af71-1251cf99ae38
-@bind l1 Slider(0.05:0.05:2, default=0.5)
+@bind l1 Slider(0.05:0.05:2, default=0.1348)
 
 # ╔═╡ cdd16f8e-e945-4d5f-a71d-6896f9146512
 l1
@@ -508,8 +508,8 @@ p(x) = ((Vrx) * x, al + (Vry) * x - ((9.81 * x^2) / 2))                         
 py(x) = (al + (Vry) * x - ((9.81 * x^2) / 2))                                       #Relacionamos la componente y con el vector posición
 px(x) = (Vrx * x)                                                                  #Relacionamos la componente x con el vector posición
 
-	    tiro = @animate for t in 0:0.1:5                                    #Definimos que por cada t en [0 a 5] con "pasos" de 0.1 en el tiro
-		plot(p.(range(-(3),0,step = 0.1).+t),                               #Definimos el rango con los pasos    
+	    tiro = @animate for t in 0:0.1:8                                    #Definimos que por cada t en [0 a 8] con "pasos" de 0.1 en el tiro
+		plot(p.(range(-(2),0,step = 0.1).+t),                               #Definimos el rango con los pasos    
 		legend = false, title = "Tiro parabólico", lw = 3, ls=:dot)         #Se crea la grafica punteada, con el nombre de "Tiro parabólico"
 
 scatter!([px(t)],[py(t)])                                                   #Graficamos la particula en el tiro parabolico
@@ -545,8 +545,8 @@ p(x) = ((Vrx) * x, al + (Vry) * x - ((9.81 * x^2) / 2))                      #De
 py(x) = (al + (Vry) * x - ((9.81 * x^2) / 2))                                #Describimos la componente y del vector posición
 px(x) = (Vrx * x)                                                           #Describimos la componente x del vector posición
 
-	    tiro = @animate for t in 0:0.1:5                                    #Para cada t en [0 a 5] con "pasos" de 0.1
-		plot(p.(range(-(3),0,step = 0.1).+t),                                           
+	    tiro = @animate for t in 0:0.1:8                                    #Para cada t en [0 a 8] con "pasos" de 0.1
+		plot(p.(range(-(2),0,step = 0.1).+t),                                           
 		legend = false, title = "Función de tiro parabólico", lw = 3, ls=:dot)          #Creamos la grafica punteada llamada "Tiro parabólico"
 
 scatter!([px(t)],[py(t)])                                                   #Graficamos la particula del tiro parabolico
@@ -567,7 +567,7 @@ end
 end
 
 # ╔═╡ 7a37dcc4-1f4a-4361-88e4-cabf100acf34
-parabola(6,4,45,5)
+parabola(4, 6,13,45)
 
 # ╔═╡ 77aacd79-26e3-40c2-ac22-f9121aac4155
 md"""**Ejercicio** Crea una animación de cómo la superficie obtenida de la función $h(x,y) = \cos(x) + \sin(y)$ se desplaza hacia el eje Y.
@@ -580,7 +580,7 @@ begin
 
 default(legend = false, title = "h(x,y) = cos(x) + sin(y)")      #Creamos la gráfica sin nombre con el título de la función pedida
 	
-	x = y = range(-5, 5, length = 40)                            #Nombramos x & y dos variables de [-5 a 5]
+	x = y = range(-8, 8, length = 40)                            #Nombramos x & y dos variables de [-8 a 8]
 	xy = zeros(0,40)                                             #Definimos xy una variable que va hasta la misma distancia que x & y
 	n = 134                                                      #Nombramos una variable n (entre menor rd la gráfica se moverá más lenta)
 
